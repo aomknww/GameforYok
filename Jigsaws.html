@@ -22,13 +22,9 @@
         .puzzle-piece {
             width: 100px;
             height: 100px;
-            background-size: cover;
+            background-size: 300px 300px;
             cursor: pointer;
-        }
-
-        #message {
-            font-size: 20px;
-            margin-top: 20px;
+            border: 1px solid #000;
         }
 
         .next-button {
@@ -52,42 +48,9 @@
     <h2>ลากชิ้นส่วนจิ๊กซอให้ตรงช่อง</h2>
 
     <div class="puzzle-container" id="puzzle-container">
-        <!-- จิ๊กซอ 9 ชิ้น โดยใช้ภาพ '4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg' -->
-        <div class="puzzle-piece" id="piece-1" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: 0 0;"></div>
-        <div class="puzzle-piece" id="piece-2" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -100px 0;"></div>
-        <div class="puzzle-piece" id="piece-3" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -200px 0;"></div>
-        <div class="puzzle-piece" id="piece-4" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: 0 -100px;"></div>
-        <div class="puzzle-piece" id="piece-5" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -100px -100px;"></div>
-        <div class="puzzle-piece" id="piece-6" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -200px -100px;"></div>
-        <div class="puzzle-piece" id="piece-7" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: 0 -200px;"></div>
-        <div class="puzzle-piece" id="piece-8" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -100px -200px;"></div>
-        <div class="puzzle-piece" id="piece-9" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -200px -200px;"></div>
-    </div>
-
-    <!-- ข้อความเมื่อมีการตรวจสอบ -->
-    <div id="message"></div>
-
-    <!-- ปุ่มตกลง -->
-    <button class="next-button" onclick="checkPuzzle()">ตกลง</button>
-
-    <script>
-        let correctPositions = [0, 1, 2, 3, 4, 5, 6, 7, 8]; // ตัวเลขที่บ่งบอกตำแหน่งที่ถูกต้อง
-        let currentPositions = []; // ตำแหน่งที่ผู้ใช้ลากไว้
-        let draggedPiece = null; // ชิ้นส่วนที่กำลังลาก
-
-        // ให้ความสามารถในการลากและวาง
-        document.querySelectorAll('.puzzle-piece').forEach((piece, index) => {
-            piece.setAttribute('draggable', 'true');
-            piece.addEventListener('dragstart', (e) => {
-                draggedPiece = e.target;
-            });
-
-            piece.addEventListener('dragover', (e) => {
-                e.preventDefault();
-            });
-
-            piece.addEventListener('drop', (e) => {
-                e.preventDefault();
-                if (draggedPiece) {
-                    let targetId = e.target.id;
-                    let draggedId = draggedPiece.id;
+        <!-- สร้างชิ้นส่วนจิ๊กซอ 9 ชิ้น โดยที่แต่ละชิ้นจะถูกแบ่งจากภาพเดียว -->
+        <div class="puzzle-piece" id="piece-1" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: 0 0;" draggable="true"></div>
+        <div class="puzzle-piece" id="piece-2" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -100px 0;" draggable="true"></div>
+        <div class="puzzle-piece" id="piece-3" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -200px 0;" draggable="true"></div>
+        <div class="puzzle-piece" id="piece-4" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: 0 -100px;" draggable="true"></div>
+        <
