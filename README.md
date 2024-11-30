@@ -16,7 +16,6 @@
             height: 100px;
             margin: 0 auto;
             position: relative;
-            cursor: pointer;
         }
 
         .envelope img {
@@ -44,34 +43,4 @@
         }
 
         .result {
-            margin-top: 20px;
-            font-size: 18px;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- ใช้รูปภาพแทนไอคอนซองจดหมาย -->
-    <div class="envelope" onclick="openEnvelope()">
-        <img src="IMG_1219.jpeg" alt="Envelope">
-    </div>
-
-    <div class="options" id="options" style="display: none;">
-        <button onclick="selectAnswer('รัก')">รัก</button>
-        <button onclick="selectAnswer('ไม่รัก')">ไม่รัก</button>
-    </div>
-
-    <div class="result" id="result"></div>
-
-    <script>
-        function openEnvelope() {
-            document.getElementById('options').style.display = 'block';
-        }
-
-        function selectAnswer(answer) {
-            document.getElementById('result').textContent = 'คุณเลือก: ' + answer;
-        }
-    </script>
-
-</body>
-</html>
+            margin-top: 
