@@ -25,6 +25,7 @@
             background-size: 300px 300px;
             cursor: pointer;
             border: 1px solid #000;
+            background-repeat: no-repeat;
         }
 
         .next-button {
@@ -48,9 +49,28 @@
     <h2>ลากชิ้นส่วนจิ๊กซอให้ตรงช่อง</h2>
 
     <div class="puzzle-container" id="puzzle-container">
-        <!-- สร้างชิ้นส่วนจิ๊กซอ 9 ชิ้น โดยที่แต่ละชิ้นจะถูกแบ่งจากภาพเดียว -->
-        <div class="puzzle-piece" id="piece-1" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: 0 0;" draggable="true"></div>
-        <div class="puzzle-piece" id="piece-2" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -100px 0;" draggable="true"></div>
-        <div class="puzzle-piece" id="piece-3" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -200px 0;" draggable="true"></div>
-        <div class="puzzle-piece" id="piece-4" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: 0 -100px;" draggable="true"></div>
-        <
+        <!-- สร้างชิ้นส่วนจิ๊กซอ 9 ชิ้น -->
+        <div class="puzzle-piece" id="piece-1" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: 0 0;" draggable="true" ondragstart="drag(event)"></div>
+        <div class="puzzle-piece" id="piece-2" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -100px 0;" draggable="true" ondragstart="drag(event)"></div>
+        <div class="puzzle-piece" id="piece-3" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -200px 0;" draggable="true" ondragstart="drag(event)"></div>
+        <div class="puzzle-piece" id="piece-4" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: 0 -100px;" draggable="true" ondragstart="drag(event)"></div>
+        <div class="puzzle-piece" id="piece-5" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -100px -100px;" draggable="true" ondragstart="drag(event)"></div>
+        <div class="puzzle-piece" id="piece-6" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -200px -100px;" draggable="true" ondragstart="drag(event)"></div>
+        <div class="puzzle-piece" id="piece-7" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: 0 -200px;" draggable="true" ondragstart="drag(event)"></div>
+        <div class="puzzle-piece" id="piece-8" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -100px -200px;" draggable="true" ondragstart="drag(event)"></div>
+        <div class="puzzle-piece" id="piece-9" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -200px -200px;" draggable="true" ondragstart="drag(event)"></div>
+    </div>
+
+    <button class="next-button" onclick="checkPuzzle()">ตกลง</button>
+
+    <script>
+        let correctPositions = [
+            {id: "piece-1", x: 0, y: 0},
+            {id: "piece-2", x: 1, y: 0},
+            {id: "piece-3", x: 2, y: 0},
+            {id: "piece-4", x: 0, y: 1},
+            {id: "piece-5", x: 1, y: 1},
+            {id: "piece-6", x: 2, y: 1},
+            {id: "piece-7", x: 0, y: 2},
+            {id: "piece-8", x: 1, y: 2},
+            {id: "piece-9", x: 2, y: 2}
