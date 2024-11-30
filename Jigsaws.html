@@ -85,3 +85,81 @@
         function allowDrop(event) {
             event.preventDefault();
         }
+
+        // ฟังก์ชันที่ใช้ในการลากชิ้นส่วน
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        // ฟังก์ชันสำหรับวางชิ้นส่วนลงในพื้นที่
+        function drop(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            var draggedElement = document.getElementById(data);
+            event.target.appendChild(draggedElement); // วางชิ้นส่วนในพื้นที่ที่เลือก
+        }
+
+        // ฟังก์ชันตรวจสอบการเรียงภาพ
+        function checkPuzzle() {
+            const correctPositions = [
+                "piece-1", "piece-2", "piece-3", "piece-4", "piece-5", "piece-6", "piece-7", "piece-8", "piece-9"
+            ];
+
+            let correct = true;
+            for (let i = 1; i <= 9; i++) {
+                const zone = document.getElementById('zone-' + i);
+                const piece = zone.querySelector('.puzzle-piece');
+
+                if (piece && piece.id !== correctPositions[i - 1]) {
+                    correct = false;
+                    break;
+                }
+            }
+
+            if (correct) {
+                alert("คุณทำถูกต้องแล้ว!");
+            } else {
+                alert("ยังไม่ถูกต้อง ลองใหม่!");
+            }
+        }
+
+        // ฟังก์ชันสลับชิ้นส่วนของจิ๊กซอ
+        function shufflePuzzle() {
+            const pieces = [
+                {id: "piece-1", position: {x: 0, y: 0}},
+                {id: "piece-2", position: {x: 1, y: 0}},
+                {id: "piece-3", position: {x: 2, y: 0}},
+                {id: "piece-4", position: {x: 0, y: 1}},
+                {id: "piece-5", position: {x: 1, y: 1}},
+                {id: "piece-6", position: {x: 2, y: 1}},
+                {id: "piece-7", position: {x: 0, y: 2}},
+                {id: "piece-8", position: {x: 1, y: 2}},
+                {id: "piece-9", position: {x: 2, y: 2}}
+            ];
+
+            // สุ่มการจัดเรียงชิ้นส่วน
+            pieces.sort(() => Math.random() - 0.5);
+
+            // ลบชิ้นส่วนเก่าออกจาก DOM
+            const puzzleContainer = document.getElementById("puzzle-container");
+            puzzleContainer.innerHTML = '';
+
+            // สร้างชิ้นส่วนใหม่ในตำแหน่งสุ่ม
+            pieces.forEach(piece => {
+                const div = document.createElement("div");
+                div.id = piece.id;
+                div.className = "puzzle-piece";
+                div.style.backgroundImage = "url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg')";
+                div.style.backgroundPosition = `-${piece.position.x * 100}px -${piece.position.y * 100}px`;
+                div.draggable = true;
+                div.ondragstart = drag;
+                puzzleContainer.appendChild(div);
+            });
+        }
+
+        // เรียกใช้ฟังก์ชันสลับเมื่อโหลดหน้าแรก
+        shufflePuzzle();
+    </script>
+
+</body>
+</html>
