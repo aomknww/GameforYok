@@ -11,6 +11,16 @@
             padding-top: 50px;
         }
 
+        /* ส่วนแสดงภาพตัวอย่าง */
+        .image-preview {
+            width: 150px;
+            height: 150px;
+            margin: 20px auto;
+            background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); /* แทนที่ด้วยชื่อภาพที่ถูกต้อง */
+            background-size: 300px 300px;
+            border: 2px solid #ccc;
+        }
+
         .puzzle-container {
             display: grid;
             grid-template-columns: repeat(3, 100px);
@@ -55,6 +65,9 @@
 </head>
 <body>
 
+    <!-- ภาพตัวอย่างเล็ก ๆ -->
+    <div class="image-preview"></div>
+
     <h2>ลากชิ้นส่วนจิ๊กซอให้ตรงช่อง</h2>
 
     <div class="puzzle-container" id="puzzle-container">
@@ -75,10 +88,10 @@
     </div>
 
     <!-- ปุ่มตกลง -->
-    <button class="next-button" onclick="checkPuzzle()">ตกลง</button>
+    <button class="next-button" id="submit-button" onclick="checkPuzzle()">ตกลง</button>
 
     <!-- ปุ่มข้อถัดไป -->
-    <button class="next-button" onclick="shufflePuzzle()">ข้อถัดไป</button>
+    <button class="next-button" id="next-button" onclick="nextStep()" disabled>ข้อถัดไป</button>
 
     <script>
         // ฟังก์ชันสำหรับอนุญาตให้มีการลากชิ้นส่วน
@@ -106,6 +119,8 @@
             ];
 
             let correct = true;
+
+            // ตรวจสอบว่าแต่ละช่องใน puzzle zone ถูกต้องหรือไม่
             for (let i = 1; i <= 9; i++) {
                 const zone = document.getElementById('zone-' + i);
                 const piece = zone.querySelector('.puzzle-piece');
@@ -117,8 +132,10 @@
             }
 
             if (correct) {
+                document.getElementById('next-button').disabled = false;  // เปิดใช้งานปุ่ม "ข้อถัดไป"
                 alert("คุณทำถูกต้องแล้ว!");
             } else {
+                document.getElementById('next-button').disabled = true;  // ปิดการใช้งานปุ่ม "ข้อถัดไป" หากยังไม่ถูกต้อง
                 alert("ยังไม่ถูกต้อง ลองใหม่!");
             }
         }
@@ -155,6 +172,11 @@
                 div.ondragstart = drag;
                 puzzleContainer.appendChild(div);
             });
+        }
+
+        // ฟังก์ชันที่จะไปหน้าถัดไป
+        function nextStep() {
+            window.location.href = "nextPage.html";  // เปลี่ยนไปหน้าถัดไป
         }
 
         // เรียกใช้ฟังก์ชันสลับเมื่อโหลดหน้าแรก
