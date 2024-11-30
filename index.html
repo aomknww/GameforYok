@@ -46,24 +46,11 @@
             margin-top: 20px;
             font-size: 18px;
         }
-
-        .next-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .next-button:hover {
-            background-color: #45a049;
-        }
     </style>
 </head>
 <body>
+
+    <h1>เลือกคำตอบ</h1>
 
     <!-- รูปภาพซองจดหมาย -->
     <div class="envelope">
@@ -78,24 +65,14 @@
 
     <div class="result" id="result"></div>
 
-    <!-- ปุ่ม "ข้อถัดไป" -->
-    <div id="next-button-container" style="display: none;">
-        <!-- เชื่อมโยงไปยังหน้าจิ๊กซอ -->
-        <a href="Jigsaws.html">
-    <button class="next-button">ข้อถัดไป</button>
-        </a>
-    </div>
+    <!-- ปุ่มข้อถัดไป -->
+    <a href="Jigsaws.html">
+        <button class="next-button">ข้อถัดไป</button>
+    </a>
 
     <script>
-        // เมื่อเลือกคำตอบ
         function selectAnswer(answer) {
             document.getElementById('result').textContent = 'คุณเลือก: ' + answer;
-
-            // แสดงปุ่ม "ข้อถัดไป" หลังจากเลือกคำตอบ
-            document.getElementById('next-button-container').style.display = 'block';
-
-            // ซ่อนปุ่มเลือกคำตอบ
-            document.querySelector('.options').style.display = 'none';
         }
     </script>
 
