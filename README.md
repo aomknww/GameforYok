@@ -1,5 +1,4 @@
-# GameforYok
-<!DOCTYPE html>
+
 <html lang="th">
 <head>
     <meta charset="UTF-8">
@@ -15,20 +14,15 @@
         .envelope {
             width: 100px;
             height: 100px;
-            background-color: #f0e1c1;
-            border-radius: 15px;
             margin: 0 auto;
             position: relative;
             cursor: pointer;
         }
 
-        .envelope:before {
-            content: "✉";
-            font-size: 50px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        .envelope img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .options {
@@ -57,7 +51,10 @@
 </head>
 <body>
 
-    <div class="envelope" onclick="openEnvelope()"></div>
+    <!-- ใช้รูปภาพแทนไอคอนซองจดหมาย -->
+    <div class="envelope" onclick="openEnvelope()">
+        <img src="your-image-url-here.jpg" alt="Envelope">
+    </div>
 
     <div class="options" id="options" style="display: none;">
         <button onclick="selectAnswer('รัก')">รัก</button>
