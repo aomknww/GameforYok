@@ -57,17 +57,8 @@
 
     <h2>ลากชิ้นส่วนจิ๊กซอให้ตรงช่อง</h2>
 
-    <div class="puzzle-container">
-        <!-- ชิ้นส่วนของจิ๊กซอที่จะแสดง -->
-        <div id="piece-1" class="puzzle-piece" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: 0 0;" draggable="true" ondragstart="drag(event)"></div>
-        <div id="piece-2" class="puzzle-piece" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -100px 0;" draggable="true" ondragstart="drag(event)"></div>
-        <div id="piece-3" class="puzzle-piece" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -200px 0;" draggable="true" ondragstart="drag(event)"></div>
-        <div id="piece-4" class="puzzle-piece" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: 0 -100px;" draggable="true" ondragstart="drag(event)"></div>
-        <div id="piece-5" class="puzzle-piece" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -100px -100px;" draggable="true" ondragstart="drag(event)"></div>
-        <div id="piece-6" class="puzzle-piece" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -200px -100px;" draggable="true" ondragstart="drag(event)"></div>
-        <div id="piece-7" class="puzzle-piece" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: 0 -200px;" draggable="true" ondragstart="drag(event)"></div>
-        <div id="piece-8" class="puzzle-piece" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -100px -200px;" draggable="true" ondragstart="drag(event)"></div>
-        <div id="piece-9" class="puzzle-piece" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -200px -200px;" draggable="true" ondragstart="drag(event)"></div>
+    <div class="puzzle-container" id="puzzle-container">
+        <!-- ชิ้นส่วนของจิ๊กซอจะอยู่ที่นี่ -->
     </div>
 
     <!-- พื้นที่ที่สามารถวางชิ้นส่วน -->
@@ -86,49 +77,11 @@
     <!-- ปุ่มตกลง -->
     <button class="next-button" onclick="checkPuzzle()">ตกลง</button>
 
+    <!-- ปุ่มข้อถัดไป -->
+    <button class="next-button" onclick="shufflePuzzle()">ข้อถัดไป</button>
+
     <script>
         // ฟังก์ชันสำหรับอนุญาตให้มีการลากชิ้นส่วน
         function allowDrop(event) {
             event.preventDefault();
         }
-
-        // ฟังก์ชันที่ใช้ในการลากชิ้นส่วน
-        function drag(event) {
-            event.dataTransfer.setData("text", event.target.id);
-        }
-
-        // ฟังก์ชันสำหรับวางชิ้นส่วนลงในพื้นที่
-        function drop(event) {
-            event.preventDefault();
-            var data = event.dataTransfer.getData("text");
-            var draggedElement = document.getElementById(data);
-            event.target.appendChild(draggedElement); // วางชิ้นส่วนในพื้นที่ที่เลือก
-        }
-
-        // ฟังก์ชันตรวจสอบการเรียงภาพ
-        function checkPuzzle() {
-            const correctPositions = [
-                "piece-1", "piece-2", "piece-3", "piece-4", "piece-5", "piece-6", "piece-7", "piece-8", "piece-9"
-            ];
-
-            let correct = true;
-            for (let i = 1; i <= 9; i++) {
-                const zone = document.getElementById('zone-' + i);
-                const piece = zone.querySelector('.puzzle-piece');
-
-                if (piece && piece.id !== correctPositions[i - 1]) {
-                    correct = false;
-                    break;
-                }
-            }
-
-            if (correct) {
-                alert("คุณทำถูกต้องแล้ว!");
-            } else {
-                alert("ยังไม่ถูกต้อง ลองใหม่!");
-            }
-        }
-    </script>
-
-</body>
-</
