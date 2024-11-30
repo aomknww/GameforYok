@@ -53,7 +53,7 @@
 
     <!-- ใช้รูปภาพแทนไอคอนซองจดหมาย -->
     <div class="envelope" onclick="openEnvelope()">
-        <img src="your-image-url-here.jpg" alt="Envelope">
+        <img src="IMG_1219.jpeg" alt="Envelope">
     </div>
 
     <div class="options" id="options" style="display: none;">
