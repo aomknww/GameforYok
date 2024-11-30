@@ -26,10 +26,6 @@
             cursor: pointer;
         }
 
-        .hidden {
-            display: none;
-        }
-
         #message {
             font-size: 20px;
             margin-top: 20px;
@@ -72,9 +68,7 @@
     <div id="message"></div>
 
     <!-- ปุ่มตกลง -->
-    <div id="next-button-container" class="hidden">
-        <button class="next-button" onclick="checkPuzzle()">ตกลง</button>
-    </div>
+    <button class="next-button" onclick="checkPuzzle()">ตกลง</button>
 
     <script>
         let correctPositions = [0, 1, 2, 3, 4, 5, 6, 7, 8]; // ตัวเลขที่บ่งบอกตำแหน่งที่ถูกต้อง
@@ -97,33 +91,3 @@
                 if (draggedPiece) {
                     let targetId = e.target.id;
                     let draggedId = draggedPiece.id;
-                    // ถ้ามีการวางลงบนช่องเดียวกัน
-                    if (draggedId !== targetId) {
-                        // สลับตำแหน่งระหว่างชิ้นส่วน
-                        let targetIndex = parseInt(targetId.split('-')[1]);
-                        let draggedIndex = parseInt(draggedId.split('-')[1]);
-
-                        currentPositions[draggedIndex] = targetIndex;
-                        currentPositions[targetIndex] = draggedIndex;
-
-                        // เปลี่ยนตำแหน่งของชิ้นส่วน
-                        let targetStyle = e.target.style.backgroundImage;
-                        e.target.style.backgroundImage = draggedPiece.style.backgroundImage;
-                        draggedPiece.style.backgroundImage = targetStyle;
-                    }
-                }
-            });
-        });
-
-        // ฟังก์ชันตรวจสอบว่าเกมจิ๊กซอถูกต้องหรือไม่
-        function checkPuzzle() {
-            if (JSON.stringify(currentPositions) === JSON.stringify(correctPositions)) {
-                alert("ถูกต้อง!");
-            } else {
-                alert("ผิด! ลองใหม่อีกครั้ง");
-            }
-        }
-    </script>
-
-</body>
-</html>
