@@ -12,8 +12,8 @@
         }
 
         .envelope {
-            width: 100px;
-            height: 100px;
+            width: 300px;  /* ขนาดที่ต้องการ */
+            height: 300px; /* ขนาดที่ต้องการ */
             margin: 0 auto;
             position: relative;
         }
@@ -46,6 +46,23 @@
             margin-top: 20px;
             font-size: 18px;
         }
+
+        /* ปุ่มข้อถัดไปจะซ่อนจนกว่าจะกดคำตอบ */
+        .next-button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            display: none; /* เริ่มต้นปุ่มจะไม่แสดง */
+        }
+
+        .next-button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -66,13 +83,17 @@
     <div class="result" id="result"></div>
 
     <!-- ปุ่มข้อถัดไป -->
-    <a href="Jigsaws.html">
-        <button class="next-button">ข้อถัดไป</button>
+    <a href="Jigsaws.html" id="next-button-link" style="display: none;">
+        <button class="next-button" id="next-button">ข้อถัดไป</button>
     </a>
 
     <script>
         function selectAnswer(answer) {
+            // แสดงคำตอบที่เลือก
             document.getElementById('result').textContent = 'คุณเลือก: ' + answer;
+            
+            // แสดงปุ่มข้อถัดไป
+            document.getElementById('next-button-link').style.display = 'block';
         }
     </script>
 
