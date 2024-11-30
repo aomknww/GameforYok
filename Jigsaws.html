@@ -56,16 +56,16 @@
     <h2>ลากชิ้นส่วนจิ๊กซอให้ตรงช่อง</h2>
 
     <div class="puzzle-container" id="puzzle-container">
-        <!-- จิ๊กซอ 9 ชิ้น -->
-        <div class="puzzle-piece" id="piece-1" style="background-image: url('IMG_1219.jpeg');"></div>
-        <div class="puzzle-piece" id="piece-2" style="background-image: url('IMG_1219.jpeg');"></div>
-        <div class="puzzle-piece" id="piece-3" style="background-image: url('IMG_1219.jpeg');"></div>
-        <div class="puzzle-piece" id="piece-4" style="background-image: url('IMG_1219.jpeg');"></div>
-        <div class="puzzle-piece" id="piece-5" style="background-image: url('IMG_1219.jpeg');"></div>
-        <div class="puzzle-piece" id="piece-6" style="background-image: url('IMG_1219.jpeg');"></div>
-        <div class="puzzle-piece" id="piece-7" style="background-image: url('IMG_1219.jpeg');"></div>
-        <div class="puzzle-piece" id="piece-8" style="background-image: url('IMG_1219.jpeg');"></div>
-        <div class="puzzle-piece" id="piece-9" style="background-image: url('IMG_1219.jpeg');"></div>
+        <!-- จิ๊กซอ 9 ชิ้น โดยใช้ภาพ '4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg' -->
+        <div class="puzzle-piece" id="piece-1" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: 0 0;"></div>
+        <div class="puzzle-piece" id="piece-2" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -100px 0;"></div>
+        <div class="puzzle-piece" id="piece-3" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -200px 0;"></div>
+        <div class="puzzle-piece" id="piece-4" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: 0 -100px;"></div>
+        <div class="puzzle-piece" id="piece-5" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -100px -100px;"></div>
+        <div class="puzzle-piece" id="piece-6" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -200px -100px;"></div>
+        <div class="puzzle-piece" id="piece-7" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: 0 -200px;"></div>
+        <div class="puzzle-piece" id="piece-8" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -100px -200px;"></div>
+        <div class="puzzle-piece" id="piece-9" style="background-image: url('4B8F3C57-7026-4DA5-9AFD-121C18A5B6C4.jpeg'); background-position: -200px -200px;"></div>
     </div>
 
     <!-- ข้อความเมื่อมีการตรวจสอบ -->
@@ -109,4 +109,21 @@
                         // เปลี่ยนตำแหน่งของชิ้นส่วน
                         let targetStyle = e.target.style.backgroundImage;
                         e.target.style.backgroundImage = draggedPiece.style.backgroundImage;
-                        dragged
+                        draggedPiece.style.backgroundImage = targetStyle;
+                    }
+                }
+            });
+        });
+
+        // ฟังก์ชันตรวจสอบว่าเกมจิ๊กซอถูกต้องหรือไม่
+        function checkPuzzle() {
+            if (JSON.stringify(currentPositions) === JSON.stringify(correctPositions)) {
+                alert("ถูกต้อง!");
+            } else {
+                alert("ผิด! ลองใหม่อีกครั้ง");
+            }
+        }
+    </script>
+
+</body>
+</html>
