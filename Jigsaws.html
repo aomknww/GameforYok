@@ -115,28 +115,5 @@
             });
         });
 
-        // เมื่อผู้ใช้เริ่มเล่นเกม
-        function startPuzzle() {
-            currentPositions = Array.from({ length: 9 }, (_, i) => i);
-            document.getElementById('next-button-container').classList.remove('hidden');
-        }
-
         // ฟังก์ชันตรวจสอบว่าเกมจิ๊กซอถูกต้องหรือไม่
-        function checkPuzzle() {
-            if (JSON.stringify(currentPositions) === JSON.stringify(correctPositions)) {
-                document.getElementById('message').textContent = "ถูกต้อง!";
-                setTimeout(() => {
-                    alert("ไปยังขั้นตอนถัดไป!");
-                    // สามารถใส่การเปลี่ยนหน้าเว็บที่นี่ เช่น `window.location.href = "nextPage.html";`
-                }, 1000);
-            } else {
-                document.getElementById('message').textContent = "ผิด! ลองใหม่อีกครั้ง";
-            }
-        }
-
-        // เริ่มเกมเมื่อโหลดหน้า
-        window.onload = startPuzzle;
-    </script>
-
-</body>
-</html>
+        function checkPuzzle
